@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh:*)",
+      "Bash(winget install:*)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" auth login -h github.com -p https -w)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" auth status)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" repo clone Chyi1214/berjaya-wms-react)",
+      "Bash(git clone:*)",
+      "Bash(npm install)",
+      "Bash(cp:*)",
+      "Bash(npm run dev:*)",
+      "Bash(firebase:*)",
+      "Bash(npm run build:*)",
+      "Bash(git pull:*)",
+      "Bash(npm run deploy:preview:*)",
+      "Bash(dir:*)",
+      "Bash(npx firebase deploy --only hosting)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm install:*)",
+      "Bash(npx firebase:*)",
+      "Bash(git reset:*)",
+      "Bash(git config:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

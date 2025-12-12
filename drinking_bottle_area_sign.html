@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drinking Bottle Area Sign</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 210mm;
+      height: 297mm;
+      font-family: Arial, Helvetica, sans-serif;
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .sign-container {
+      width: 210mm;
+      height: 297mm;
+      background: #0077be;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12mm;
+    }
+
+    .white-box {
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15mm;
+      border: 6px solid #0077be;
+    }
+
+    .icon-circle {
+      width: 100mm;
+      height: 100mm;
+      background: #e6f3ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid #0077be;
+      margin-bottom: 12mm;
+    }
+
+    .bottle-svg {
+      width: 65mm;
+      height: 65mm;
+    }
+
+    .title {
+      font-size: 85px;
+      font-weight: 900;
+      color: #0077be;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.0;
+      margin-bottom: 8mm;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 48px;
+      color: #333333;
+      text-align: center;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10mm;
+    }
+
+    .bottom-bar {
+      width: 100%;
+      background: #0077be;
+      padding: 8mm 10mm;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .bottom-text {
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sign-container">
+    <div class="white-box">
+      <div class="icon-circle">
+        <svg class="bottle-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#4db8ff;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#0077be;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+
+          <!-- Bottle Cap -->
+          <rect x="38" y="8" width="24" height="12" rx="3" fill="#0077be"/>
+          <rect x="41" y="4" width="18" height="6" rx="2" fill="#0077be"/>
+
+          <!-- Bottle Body -->
+          <path d="M40 20 L40 26 Q40 30 37 33 L37 36 Q33 40 33 46 L33 82 Q33 90 42 90 L58 90 Q67 90 67 82 L67 46 Q67 40 63 36 L63 33 Q60 30 60 26 L60 20 Z"
+                fill="white"
+                stroke="#0077be"
+                stroke-width="3"/>
+
+          <!-- Water inside -->
+          <path d="M35 50 L35 80 Q35 87 43 87 L57 87 Q65 87 65 80 L65 50 Q50 56 35 50 Z"
+                fill="url(#waterGradient)"/>
+
+          <!-- Water surface -->
+          <ellipse cx="50" cy="50" rx="14" ry="4" fill="#4db8ff"/>
+
+          <!-- Bottle Shine -->
+          <path d="M40 35 L40 75" stroke="rgba(0,119,190,0.2)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h1 class="title">DRINKING<br>BOTTLE<br>AREA</h1>
+
+      <p class="subtitle">PLACE BOTTLES HERE</p>
+
+      <div class="bottom-bar">
+        <span class="bottom-text">KEEP AREA CLEAN & TIDY</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

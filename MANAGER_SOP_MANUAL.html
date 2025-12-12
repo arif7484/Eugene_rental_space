@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berjaya WMS - Manager Dashboard SOP Manual</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            page-break-after: always;
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        .cover-page h1 {
+            font-size: 32pt;
+            color: #1a365d;
+            margin-bottom: 10px;
+            border: none;
+        }
+
+        .cover-page h2 {
+            font-size: 24pt;
+            color: #2d3748;
+            font-weight: normal;
+            margin-bottom: 50px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 18pt;
+            color: #4a5568;
+            margin-bottom: 100px;
+        }
+
+        .cover-page .doc-info {
+            font-size: 12pt;
+            color: #718096;
+            margin-top: 150px;
+        }
+
+        .cover-page .doc-info p {
+            margin: 5px 0;
+        }
+
+        /* Table of Contents */
+        .toc {
+            page-break-after: always;
+        }
+
+        .toc h2 {
+            color: #1a365d;
+            border-bottom: 3px solid #3182ce;
+            padding-bottom: 10px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .toc a {
+            color: #2d3748;
+            text-decoration: none;
+        }
+
+        .toc .section-num {
+            display: inline-block;
+            width: 40px;
+            font-weight: bold;
+        }
+
+        /* Headers */
+        h1 {
+            font-size: 20pt;
+            color: #1a365d;
+            border-bottom: 3px solid #3182ce;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: #2c5282;
+            border-bottom: 2px solid #90cdf4;
+            padding-bottom: 8px;
+            margin-top: 25px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 13pt;
+            color: #2d3748;
+            margin-top: 20px;
+            page-break-after: avoid;
+        }
+
+        h4 {
+            font-size: 11pt;
+            color: #4a5568;
+            margin-top: 15px;
+            page-break-after: avoid;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+
+        th {
+            background-color: #2c5282;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 8px 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* Procedure boxes */
+        .procedure {
+            background-color: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+
+        .procedure h4 {
+            color: #276749;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .procedure ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .procedure li {
+            margin-bottom: 5px;
+        }
+
+        /* Warning boxes */
+        .warning {
+            background-color: #fffaf0;
+            border-left: 4px solid #dd6b20;
+            padding: 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+
+        .warning::before {
+            content: "⚠️ Important: ";
+            font-weight: bold;
+            color: #c05621;
+        }
+
+        /* Note boxes */
+        .note {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+
+        .note::before {
+            content: "📝 Note: ";
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+
+        /* Diagram box */
+        .diagram {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+            white-space: pre;
+            overflow-x: auto;
+            page-break-inside: avoid;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Status badges */
+        .status-work { color: #38a169; font-weight: bold; }
+        .status-starve { color: #d69e2e; font-weight: bold; }
+        .status-block { color: #e53e3e; font-weight: bold; }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            font-size: 9pt;
+            color: #718096;
+        }
+
+        /* Page breaks */
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+    <h1>BERJAYA WMS</h1>
+    <h2>Manager Dashboard</h2>
+    <div class="subtitle">Standard Operating Procedure (SOP) Manual</div>
+
+    <div class="doc-info">
+        <p><strong>Document Version:</strong> 1.0</p>
+        <p><strong>Effective Date:</strong> December 2025</p>
+        <p><strong>System Version:</strong> Berjaya WMS React v8.0</p>
+        <p><strong>Department:</strong> Management Operations</p>
+        <p><strong>Classification:</strong> Internal Use Only</p>
+    </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h2>TABLE OF CONTENTS</h2>
+    <ul>
+        <li><span class="section-num">1.</span> Introduction</li>
+        <li><span class="section-num">2.</span> Getting Started</li>
+        <li><span class="section-num">3.</span> Dashboard Overview</li>
+        <li><span class="section-num">4.</span> Inventory Management</li>
+        <li><span class="section-num">5.</span> Production Line Monitoring</li>
+        <li><span class="section-num">6.</span> Quality Assurance (QA)</li>
+        <li><span class="section-num">7.</span> Operations Management</li>
+        <li><span class="section-num">8.</span> Info & Communication Tools</li>
+        <li><span class="section-num">9.</span> Human Resources (HR)</li>
+        <li><span class="section-num">10.</span> Common Workflows</li>
+        <li><span class="section-num">11.</span> Troubleshooting</li>
+        <li><span class="section-num">12.</span> Appendix</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: INTRODUCTION -->
+<div class="section page-break">
+    <h1>1. INTRODUCTION</h1>
+
+    <h2>1.1 Purpose of This Manual</h2>
+    <p>This Standard Operating Procedure (SOP) manual provides comprehensive guidance for Managers using the Berjaya WMS (Warehouse Management System). It covers all functions, features, and workflows available in the Manager Dashboard.</p>
+
+    <h2>1.2 Scope</h2>
+    <p>This manual covers:</p>
+    <ul>
+        <li>All Manager Dashboard functions and features</li>
+        <li>Step-by-step procedures for common tasks</li>
+        <li>Best practices for daily operations</li>
+        <li>Troubleshooting common issues</li>
+    </ul>
+
+    <h2>1.3 Target Users</h2>
+    <table>
+        <tr>
+            <th>User Role</th>
+            <th>Access Level</th>
+        </tr>
+        <tr>
+            <td><strong>Managers</strong></td>
+            <td>Full access to all documented features</td>
+        </tr>
+        <tr>
+            <td><strong>Supervisors</strong></td>
+            <td>Limited access based on permissions</td>
+        </tr>
+        <tr>
+            <td><strong>DevAdmins</strong></td>
+            <td>Full system access including HR module</td>
+        </tr>
+    </table>
+
+    <h2>1.4 System Requirements</h2>
+    <ul>
+        <li>Modern web browser (Chrome, Firefox, Edge - latest versions)</li>
+        <li>Stable internet connection</li>
+        <li>Valid login credentials with Manager role</li>
+    </ul>
+</div>
+
+<!-- SECTION 2: GETTING STARTED -->
+<div class="section page-break">
+    <h1>2. GETTING STARTED</h1>
+
+    <h2>2.1 Logging In</h2>
+
+    <div class="procedure">
+        <h4>Procedure: Login to System</h4>
+        <ol>
+            <li>Open your web browser</li>
+            <li>Navigate to the Berjaya WMS URL</li>
+            <li>Click <strong>"Sign in with Google"</strong></li>
+            <li>Select your authorized Google account</li>
+            <li>Wait for authentication to complete</li>
+            <li>You will be redirected to the Manager Dashboard</li>
+        </ol>
+    </div>
+
+    <div class="note">Use only your authorized company Google account. If login fails, contact your DevAdmin for account verification.</div>
+
+    <h2>2.2 Understanding the Interface</h2>
+    <p>Upon successful login, you will see the main dashboard interface:</p>
+
+    <div class="diagram">┌─────────────────────────────────────────────────────────────┐
+│  BERJAYA WMS                              [User Menu] [Ela] │
+├─────────────────────────────────────────────────────────────┤
+│  📦 INVENTORY │ 🏭 PRODUCTION │ 🔬 QA │ ⚙️ OPS │ 💬 INFO │ 👥 HR │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│                    [MAIN CONTENT AREA]                      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</div>
+
+    <h2>2.3 Navigation Structure</h2>
+    <table>
+        <tr>
+            <th>Tab</th>
+            <th>Icon</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Inventory</td>
+            <td>📦</td>
+            <td>Manage stock, transactions, waste reports</td>
+        </tr>
+        <tr>
+            <td>Production Line</td>
+            <td>🏭</td>
+            <td>Monitor production zones and car tracking</td>
+        </tr>
+        <tr>
+            <td>QA</td>
+            <td>🔬</td>
+            <td>Quality assurance inspections and analytics</td>
+        </tr>
+        <tr>
+            <td>Operations</td>
+            <td>⚙️</td>
+            <td>Batch management and task assignment</td>
+        </tr>
+        <tr>
+            <td>Info</td>
+            <td>💬</td>
+            <td>AI conversations and translation tools</td>
+        </tr>
+        <tr>
+            <td>HR</td>
+            <td>👥</td>
+            <td>User management (requires special permission)</td>
+        </tr>
+    </table>
+</div>
+
+<!-- SECTION 3: DASHBOARD OVERVIEW -->
+<div class="section page-break">
+    <h1>3. DASHBOARD OVERVIEW</h1>
+
+    <h2>3.1 Main Categories</h2>
+    <p>The Manager Dashboard is organized into <strong>6 main categories</strong>:</p>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Category</th>
+            <th>Color</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>INVENTORY</strong></td>
+            <td>Blue</td>
+            <td>Stock management and transactions</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>PRODUCTION LINE</strong></td>
+            <td>Orange</td>
+            <td>Real-time production monitoring</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>QA</strong></td>
+            <td>Green</td>
+            <td>Quality assurance operations</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>OPERATIONS</strong></td>
+            <td>Red</td>
+            <td>Cross-departmental operations</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>INFO</strong></td>
+            <td>Pink</td>
+            <td>Communication and translation tools</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><strong>HR</strong></td>
+            <td>Purple</td>
+            <td>User management (restricted access)</td>
+        </tr>
+    </table>
+
+    <h2>3.2 Ela AI Assistant</h2>
+    <p>Located in the top-right corner, the <strong>Ela Menu</strong> provides:</p>
+    <ul>
+        <li>💬 <strong>Open Chat</strong> - Ask questions or get help</li>
+        <li>📝 <strong>Translation Channels</strong> - Access translation tools</li>
+        <li>⚙️ <strong>Personal Settings</strong> - Configure your preferences</li>
+    </ul>
+
+    <div class="note">Click the Ela icon in the top-right corner to access these features.</div>
+</div>
+
+<!-- SECTION 4: INVENTORY MANAGEMENT -->
+<div class="section page-break">
+    <h1>4. INVENTORY MANAGEMENT</h1>
+
+    <h2>4.1 Overview</h2>
+    <p>The Inventory category contains <strong>6 sub-tabs</strong> for comprehensive inventory control:</p>
+
+    <table>
+        <tr>
+            <th>Sub-Tab</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>Expected Inventory</td>
+            <td>View baseline inventory by batch and location</td>
+        </tr>
+        <tr>
+            <td>Checked Items</td>
+            <td>See items counted by workers</td>
+        </tr>
+        <tr>
+            <td>Transaction Log</td>
+            <td>Complete audit trail of movements</td>
+        </tr>
+        <tr>
+            <td>Waste Inventory</td>
+            <td>Track waste, lost, and defective items</td>
+        </tr>
+        <tr>
+            <td>Scanner</td>
+            <td>Manage barcode scanner data</td>
+        </tr>
+        <tr>
+            <td>Item Master</td>
+            <td>Catalog management and BOMs</td>
+        </tr>
+    </table>
+
+    <h2>4.2 Expected Inventory Tab</h2>
+    <p><strong>Purpose:</strong> View the current inventory levels based on batch allocations.</p>
+
+    <div class="procedure">
+        <h4>Procedure: Viewing Inventory</h4>
+        <ol>
+            <li>Click <strong>Inventory</strong> → <strong>Expected Inventory</strong></li>
+            <li>Use filters to narrow your search:
+                <ul>
+                    <li><strong>Search Box:</strong> Enter SKU or Item Name</li>
+                    <li><strong>Batch Filter:</strong> Select specific batch or "All Batches"</li>
+                    <li><strong>Location Filter:</strong> Select facility location</li>
+                </ul>
+            </li>
+            <li>Review the summary cards (Total SKUs, Total Quantity, Total Locations)</li>
+        </ol>
+    </div>
+
+    <div class="procedure">
+        <h4>Procedure: Exporting Data</h4>
+        <ol>
+            <li>Apply desired filters</li>
+            <li>Click <strong>Export CSV</strong> button</li>
+            <li>File downloads automatically with current date</li>
+        </ol>
+    </div>
+
+    <h2>4.3 Checked Items Tab</h2>
+    <p><strong>Purpose:</strong> View items that workers have physically counted during their shift.</p>
+
+    <div class="procedure">
+        <h4>Procedure: View Checked Items</h4>
+        <ol>
+            <li>Click <strong>Inventory</strong> → <strong>Checked Items</strong></li>
+            <li>Review the list showing:
+                <ul>
+                    <li>SKU and Item Name</li>
+                    <li>Location</li>
+                    <li>Amount Counted</li>
+                    <li>Counted By (worker name)</li>
+                    <li>Timestamp</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <h2>4.4 Transaction Log Tab</h2>
+    <p><strong>Purpose:</strong> Complete audit trail of all inventory movements.</p>
+
+    <h3>Transaction Types</h3>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>IN</td>
+            <td>Items received into inventory</td>
+        </tr>
+        <tr>
+            <td>OUT</td>
+            <td>Items removed from inventory</td>
+        </tr>
+        <tr>
+            <td>ADJUSTMENT</td>
+            <td>Manual quantity corrections</td>
+        </tr>
+        <tr>
+            <td>TRANSFER</td>
+            <td>Items moved between locations</td>
+        </tr>
+        <tr>
+            <td>RECTIFICATION</td>
+            <td>Correction entry from cancelled transaction</td>
+        </tr>
+    </table>
+
+    <div class="procedure">
+        <h4>Procedure: Cancelling Transactions</h4>
+        <ol>
+            <li>Select transactions using checkboxes</li>
+            <li>Click <strong>Cancel & Rectify</strong> button</li>
+            <li>Enter reason for cancellation</li>
+            <li>Confirm the action</li>
+            <li>System creates rectification entry automatically</li>
+        </ol>
+    </div>
+
+    <div class="warning">Only COMPLETED transactions can be cancelled. Cancellation creates a rectification entry to maintain the audit trail.</div>
+
+    <h2>4.5 Waste Inventory Tab</h2>
+    <p><strong>Purpose:</strong> Track and approve waste, lost, defective, and unplanned usage reports.</p>
+
+    <h3>Report Types</h3>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Icon</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>WASTE</td>
+            <td>🔥</td>
+            <td>Items discarded due to damage</td>
+        </tr>
+        <tr>
+            <td>LOST</td>
+            <td>❓</td>
+            <td>Items missing or unaccounted</td>
+        </tr>
+        <tr>
+            <td>DEFECT</td>
+            <td>⚠️</td>
+            <td>Items found defective during QA</td>
+        </tr>
+        <tr>
+            <td>UNPLANNED_USAGE</td>
+            <td>📋</td>
+            <td>Items used outside normal operations</td>
+        </tr>
+    </table>
+
+    <div class="procedure">
+        <h4>Procedure: Approving Reports</h4>
+        <ol>
+            <li>Filter by Status: <strong>Pending</strong></li>
+            <li>Click <strong>View Details</strong> on report</li>
+            <li>Review all information and photos</li>
+            <li>Click <strong>Approve Report</strong> button</li>
+            <li>System records your name and timestamp</li>
+        </ol>
+    </div>
+
+    <h2>4.6 Item Master Tab</h2>
+    <p><strong>Purpose:</strong> Manage the item catalog and Bill of Materials (BOMs).</p>
+
+    <h3>Sub-tab: Items</h3>
+    <div class="procedure">
+        <h4>Procedure: Creating/Editing Items</h4>
+        <ol>
+            <li>Click <strong>Add Item</strong> or <strong>Edit</strong> on existing item</li>
+            <li>Fill in required fields (SKU, Item Name, Category, Unit)</li>
+            <li>Click <strong>Save</strong></li>
+        </ol>
+    </div>
+
+    <h3>Sub-tab: BOMs (Bill of Materials)</h3>
+    <div class="procedure">
+        <h4>Procedure: Managing BOMs</h4>
+        <ol>
+            <li>Click <strong>Inventory</strong> → <strong>Item Master</strong> → <strong>BOMs</strong></li>
+            <li>View existing BOMs or click <strong>Add BOM</strong></li>
+            <li>Define components and quantities</li>
+            <li>Click <strong>Save</strong></li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION 5: PRODUCTION LINE MONITORING -->
+<div class="section page-break">
+    <h1>5. PRODUCTION LINE MONITORING</h1>
+
+    <h2>5.1 Overview</h2>
+    <p>The Production Line category provides <strong>real-time monitoring</strong> of manufacturing operations with <strong>auto-refresh every 10 seconds</strong>.</p>
+
+    <table>
+        <tr>
+            <th>Sub-Tab</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>Takt Time</td>
+            <td>Monitor zone performance and efficiency</td>
+        </tr>
+        <tr>
+            <td>Car Tracking</td>
+            <td>Track individual vehicle movements</td>
+        </tr>
+        <tr>
+            <td>Starve/Block Analysis</td>
+            <td>Analyze production bottlenecks</td>
+        </tr>
+        <tr>
+            <td>Break Schedule</td>
+            <td>Configure operating hours</td>
+        </tr>
+    </table>
+
+    <h2>5.2 Takt Time Tab</h2>
+    <p><strong>Purpose:</strong> Monitor production line flow with zone performance metrics.</p>
+
+    <h3>Zone Status Legend</h3>
+    <table>
+        <tr>
+            <th>Status</th>
+            <th>Color</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td><span class="status-work">WORK</span></td>
+            <td>Green</td>
+            <td>Zone is actively processing</td>
+        </tr>
+        <tr>
+            <td><span class="status-starve">STARVE</span></td>
+            <td>Yellow</td>
+            <td>Zone waiting for work (no cars)</td>
+        </tr>
+        <tr>
+            <td><span class="status-block">BLOCK</span></td>
+            <td>Red</td>
+            <td>Zone blocked by downstream</td>
+        </tr>
+        <tr>
+            <td>IDLE</td>
+            <td>Gray</td>
+            <td>Zone not in operation</td>
+        </tr>
+        <tr>
+            <td>PAUSED</td>
+            <td>Blue</td>
+            <td>Zone paused for break</td>
+        </tr>
+    </table>
+
+    <div class="procedure">
+        <h4>Procedure: Monitoring Production</h4>
+        <ol>
+            <li>Click <strong>Production Line</strong> → <strong>Takt Time</strong></li>
+            <li>View real-time zone status grid</li>
+            <li>Monitor key metrics:
+                <ul>
+                    <li>Expected vs Actual Takt Time</li>
+                    <li>Average Processing Time per Zone</li>
+                    <li>Line Efficiency Percentage</li>
+                    <li>Cars Processed Today</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="note">Data auto-refreshes every 10 seconds. Click <strong>Refresh</strong> for immediate update.</div>
+
+    <h2>5.3 Car Tracking Tab</h2>
+    <p><strong>Purpose:</strong> Track individual vehicle movements through production zones.</p>
+
+    <h3>Available Views</h3>
+    <table>
+        <tr>
+            <th>View</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Raw Transactions</td>
+            <td>Complete list of all check-in/check-out events</td>
+        </tr>
+        <tr>
+            <td>By Car (Search VIN)</td>
+            <td>Full journey timeline for specific vehicle</td>
+        </tr>
+        <tr>
+            <td>By Zone</td>
+            <td>All cars currently in each zone</td>
+        </tr>
+        <tr>
+            <td>Edit Cars</td>
+            <td>Modify or delete car records</td>
+        </tr>
+    </table>
+
+    <div class="procedure">
+        <h4>Procedure: Search by VIN</h4>
+        <ol>
+            <li>Click <strong>By Car - Search VIN</strong> view</li>
+            <li>Enter VIN in search box</li>
+            <li>View full journey timeline including zone progression, time in each zone, and worker assignments</li>
+        </ol>
+    </div>
+
+    <h2>5.4 Break Schedule Configuration Tab</h2>
+    <p><strong>Purpose:</strong> Configure factory operating hours and break schedules.</p>
+
+    <table>
+        <tr>
+            <th>Setting</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Factory Hours</td>
+            <td>Start and end time of operations</td>
+        </tr>
+        <tr>
+            <td>Morning Break</td>
+            <td>Morning rest period</td>
+        </tr>
+        <tr>
+            <td>Lunch Break</td>
+            <td>Midday break period</td>
+        </tr>
+        <tr>
+            <td>Afternoon Break</td>
+            <td>Afternoon rest period</td>
+        </tr>
+    </table>
+
+    <div class="warning">Break schedules affect all Takt Time calculations. Ensure accuracy when configuring.</div>
+</div>
+
+<!-- SECTION 6: QUALITY ASSURANCE -->
+<div class="section page-break">
+    <h1>6. QUALITY ASSURANCE (QA)</h1>
+
+    <h2>6.1 Overview</h2>
+    <p>The QA category manages inspection workflows and quality metrics.</p>
+
+    <table>
+        <tr>
+            <th>Sub-Tab</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>Inspections Manager</td>
+            <td>Manage quality inspections</td>
+        </tr>
+        <tr>
+            <td>Analytics</td>
+            <td>Quality metrics and trends</td>
+        </tr>
+        <tr>
+            <td>Defect Locations</td>
+            <td>Location-based defect analysis</td>
+        </tr>
+        <tr>
+            <td>QA Locations</td>
+            <td>Configure inspection stations</td>
+        </tr>
+        <tr>
+            <td>Stock Management</td>
+            <td>Manage cars in QA holding</td>
+        </tr>
+        <tr>
+            <td>Stock Levels</td>
+            <td>Monitor QA holding quantities</td>
+        </tr>
+        <tr>
+            <td>Configuration</td>
+            <td>Set up inspection checklists</td>
+        </tr>
+    </table>
+
+    <h2>6.2 Stock Management</h2>
+    <p><strong>Purpose:</strong> Manage vehicles held in QA areas.</p>
+
+    <div class="procedure">
+        <h4>Procedure: Viewing QA Stock</h4>
+        <ol>
+            <li>Click <strong>QA</strong> → <strong>Stock Management</strong></li>
+            <li>Use filters: Search by VIN, filter by QA location, defect status, or time period</li>
+            <li>View car details including VIN, location, time in QA, and defect counts</li>
+        </ol>
+    </div>
+
+    <h2>6.3 Configuration</h2>
+    <p><strong>Purpose:</strong> Set up inspection requirements and checklists.</p>
+
+    <div class="procedure">
+        <h4>Procedure: Configure Inspections</h4>
+        <ol>
+            <li>Click <strong>QA</strong> → <strong>Configuration</strong></li>
+            <li>Create or edit inspection checklists</li>
+            <li>Define inspection sections, defect types, and rejection criteria</li>
+            <li>Save configuration</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION 7: OPERATIONS MANAGEMENT -->
+<div class="section page-break">
+    <h1>7. OPERATIONS MANAGEMENT</h1>
+
+    <h2>7.1 Overview</h2>
+    <p>Operations spans cross-departmental functions.</p>
+
+    <table>
+        <tr>
+            <th>Sub-Tab</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>Batch Management</td>
+            <td>Centralized batch operations</td>
+        </tr>
+        <tr>
+            <td>Tasks</td>
+            <td>Task assignment and tracking</td>
+        </tr>
+    </table>
+
+    <h2>7.2 Batch Management</h2>
+    <p><strong>Purpose:</strong> Centralized management of production batches.</p>
+
+    <p><strong>Available Features:</strong></p>
+    <ul>
+        <li>📋 Batch Creation</li>
+        <li>🔄 Batch Transfers</li>
+        <li>📊 Batch Tracking</li>
+        <li>🏷️ Lot Number Management</li>
+        <li>📈 Batch Analytics</li>
+    </ul>
+
+    <h2>7.3 Tasks</h2>
+    <p><strong>Purpose:</strong> Manage operational tasks for team members.</p>
+
+    <div class="procedure">
+        <h4>Procedure: Creating Tasks</h4>
+        <ol>
+            <li>Click <strong>Operations</strong> → <strong>Tasks</strong></li>
+            <li>Click <strong>Create Task</strong></li>
+            <li>Fill in: Task description, Assignee, Priority, Deadline</li>
+            <li>Click <strong>Save</strong></li>
+        </ol>
+    </div>
+
+    <div class="procedure">
+        <h4>Procedure: Tracking Tasks</h4>
+        <ol>
+            <li>View task list</li>
+            <li>Filter by status or assignee</li>
+            <li>Update task status as work progresses</li>
+            <li>Mark complete when finished</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION 8: INFO & COMMUNICATION TOOLS -->
+<div class="section page-break">
+    <h1>8. INFO & COMMUNICATION TOOLS</h1>
+
+    <h2>8.1 Overview</h2>
+    <table>
+        <tr>
+            <th>Sub-Tab</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>Ela Conversations</td>
+            <td>Review AI assistant chats</td>
+        </tr>
+        <tr>
+            <td>Excel Translation</td>
+            <td>Translate batch data files</td>
+        </tr>
+        <tr>
+            <td>Text Box Translation</td>
+            <td>Translate text content</td>
+        </tr>
+    </table>
+
+    <h2>8.2 Ela Conversations</h2>
+    <p><strong>Purpose:</strong> Review worker feedback and AI assistant conversations.</p>
+
+    <div class="procedure">
+        <h4>Procedure: Viewing Conversations</h4>
+        <ol>
+            <li>Click <strong>Info</strong> → <strong>Ela Conversations</strong></li>
+            <li>Browse conversation list</li>
+            <li>Click any conversation to view worker name, message count, AI-generated summary, and full transcript</li>
+        </ol>
+    </div>
+
+    <h2>8.3 Translation Tools</h2>
+
+    <h3>Excel Translation</h3>
+    <div class="procedure">
+        <h4>Procedure: Translate Excel Files</h4>
+        <ol>
+            <li>Click <strong>Info</strong> → <strong>Excel Translation</strong></li>
+            <li>Upload Excel file</li>
+            <li>Select translation options</li>
+            <li>Process and download translated file</li>
+        </ol>
+    </div>
+
+    <h3>Text Box Translation</h3>
+    <div class="procedure">
+        <h4>Procedure: Translate Text</h4>
+        <ol>
+            <li>Click <strong>Info</strong> → <strong>Text Box Translation</strong></li>
+            <li>Enter text to translate</li>
+            <li>Select target language</li>
+            <li>Click <strong>Translate</strong> and copy result</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION 9: HUMAN RESOURCES -->
+<div class="section page-break">
+    <h1>9. HUMAN RESOURCES (HR)</h1>
+
+    <div class="warning">This section requires DevAdmin role or system.userManagement permission.</div>
+
+    <h2>9.1 User Management</h2>
+    <p><strong>Purpose:</strong> Manage system users, roles, and permissions.</p>
+
+    <h3>Available Roles</h3>
+    <table>
+        <tr>
+            <th>Role</th>
+            <th>Access Level</th>
+        </tr>
+        <tr>
+            <td>Logistics</td>
+            <td>Inventory management</td>
+        </tr>
+        <tr>
+            <td>Production</td>
+            <td>Line worker functions</td>
+        </tr>
+        <tr>
+            <td>QA</td>
+            <td>Quality inspection</td>
+        </tr>
+        <tr>
+            <td>Manager</td>
+            <td>Full dashboard access</td>
+        </tr>
+        <tr>
+            <td>DevAdmin</td>
+            <td>System administration</td>
+        </tr>
+    </table>
+
+    <div class="procedure">
+        <h4>Procedure: Creating User</h4>
+        <ol>
+            <li>Click <strong>Add User</strong></li>
+            <li>Enter user details: Email (required), Full Name, Display Name, Role</li>
+            <li>Click <strong>Save</strong></li>
+        </ol>
+    </div>
+
+    <div class="procedure">
+        <h4>Procedure: Editing User</h4>
+        <ol>
+            <li>Find user in list</li>
+            <li>Click <strong>Edit</strong></li>
+            <li>Modify details</li>
+            <li>Click <strong>Save</strong></li>
+        </ol>
+    </div>
+
+    <div class="procedure">
+        <h4>Procedure: Activate/Deactivate User</h4>
+        <ol>
+            <li>Find user in list</li>
+            <li>Click <strong>Activate</strong> or <strong>Deactivate</strong></li>
+            <li>Confirm action</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION 10: COMMON WORKFLOWS -->
+<div class="section page-break">
+    <h1>10. COMMON WORKFLOWS</h1>
+
+    <h2>10.1 Daily Inventory Reconciliation</h2>
+    <p><strong>Purpose:</strong> Verify inventory accuracy at end of shift.</p>
+
+    <div class="procedure">
+        <h4>Workflow Steps</h4>
+        <ol>
+            <li><strong>Review Expected Inventory</strong>
+                <ul>
+                    <li>Go to Inventory → Expected Inventory</li>
+                    <li>Note total quantities by location</li>
+                </ul>
+            </li>
+            <li><strong>Check Worker Counts</strong>
+                <ul>
+                    <li>Go to Inventory → Checked Items</li>
+                    <li>Compare with expected values</li>
+                </ul>
+            </li>
+            <li><strong>Review Transactions</strong>
+                <ul>
+                    <li>Go to Inventory → Transaction Log</li>
+                    <li>Filter by today's date</li>
+                    <li>Review all movements</li>
+                </ul>
+            </li>
+            <li><strong>Handle Discrepancies</strong>
+                <ul>
+                    <li>Create adjustment transactions if needed</li>
+                    <li>Use Cancel & Rectify for incorrect entries</li>
+                </ul>
+            </li>
+            <li><strong>Export Records</strong>
+                <ul>
+                    <li>Export final inventory count to CSV</li>
+                    <li>Save for daily records</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <h2>10.2 Production Monitoring (Continuous)</h2>
+    <p><strong>Purpose:</strong> Monitor real-time production status.</p>
+
+    <div class="procedure">
+        <h4>Workflow Steps</h4>
+        <ol>
+            <li><strong>Check Zone Status</strong> - Go to Production Line → Takt Time</li>
+            <li><strong>Identify Issues</strong> - Look for STARVE or BLOCK conditions</li>
+            <li><strong>Track Specific Cars</strong> - Go to Car Tracking, search VINs if needed</li>
+            <li><strong>Review Trends</strong> - Check Starve/Block Analysis for bottlenecks</li>
+            <li><strong>Verify Schedules</strong> - Confirm Break Schedule is accurate</li>
+        </ol>
+    </div>
+
+    <h2>10.3 Waste Report Approval Process</h2>
+    <p><strong>Purpose:</strong> Review and approve waste/defect reports.</p>
+
+    <div class="procedure">
+        <h4>Workflow Steps</h4>
+        <ol>
+            <li><strong>Filter Pending Reports</strong> - Go to Inventory → Waste Inventory, filter by Status: Pending</li>
+            <li><strong>Review Each Report</strong> - Click View Details, check item info and photos</li>
+            <li><strong>Approve or Investigate</strong> - If valid, click Approve Report</li>
+            <li><strong>Export for Records</strong> - Export approved reports to CSV</li>
+        </ol>
+    </div>
+
+    <h2>10.4 New Item Setup</h2>
+    <p><strong>Purpose:</strong> Add new items to the system catalog.</p>
+
+    <div class="procedure">
+        <h4>Workflow Steps</h4>
+        <ol>
+            <li><strong>Access Item Master</strong> - Go to Inventory → Item Master → Items</li>
+            <li><strong>Create Item</strong> - Click Add Item, enter SKU, Name, Category, Unit</li>
+            <li><strong>Save Item</strong> - Click Save, verify item appears in list</li>
+            <li><strong>Create BOM (if needed)</strong> - Go to BOMs tab, add components</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION 11: TROUBLESHOOTING -->
+<div class="section page-break">
+    <h1>11. TROUBLESHOOTING</h1>
+
+    <h2>11.1 Common Issues and Solutions</h2>
+
+    <table>
+        <tr>
+            <th>Issue</th>
+            <th>Solution</th>
+        </tr>
+        <tr>
+            <td>Data not appearing</td>
+            <td>Check filters; try different date range or location</td>
+        </tr>
+        <tr>
+            <td>Slow loading</td>
+            <td>Reduce items per page; apply stricter filters</td>
+        </tr>
+        <tr>
+            <td>Production data stale</td>
+            <td>Click Refresh or wait 10 seconds for auto-update</td>
+        </tr>
+        <tr>
+            <td>Cannot approve report</td>
+            <td>Verify manager role; check if already approved</td>
+        </tr>
+        <tr>
+            <td>Transaction won't cancel</td>
+            <td>Only COMPLETED non-rectification transactions can be cancelled</td>
+        </tr>
+        <tr>
+            <td>Export is empty</td>
+            <td>Check filters - may have excluded all items</td>
+        </tr>
+        <tr>
+            <td>Login failed</td>
+            <td>Verify using authorized Google account; contact DevAdmin</td>
+        </tr>
+    </table>
+
+    <h2>11.2 Data Refresh</h2>
+    <ul>
+        <li><strong>Production data:</strong> Auto-refreshes every 10 seconds</li>
+        <li><strong>Inventory data:</strong> Real-time sync with Firestore</li>
+        <li><strong>Manual refresh:</strong> Click Refresh button on any page</li>
+    </ul>
+
+    <h2>11.3 Browser Issues</h2>
+    <p>If experiencing display issues:</p>
+    <ol>
+        <li>Clear browser cache</li>
+        <li>Refresh the page</li>
+        <li>Try different browser</li>
+        <li>Check internet connection</li>
+    </ol>
+</div>
+
+<!-- SECTION 12: APPENDIX -->
+<div class="section page-break">
+    <h1>12. APPENDIX</h1>
+
+    <h2>12.1 Keyboard Shortcuts</h2>
+    <table>
+        <tr>
+            <th>Action</th>
+            <th>Shortcut</th>
+        </tr>
+        <tr>
+            <td>Close Modal</td>
+            <td>ESC</td>
+        </tr>
+        <tr>
+            <td>Search</td>
+            <td>Type in search box (500ms debounce)</td>
+        </tr>
+    </table>
+
+    <h2>12.2 Pagination Guidelines</h2>
+    <table>
+        <tr>
+            <th>Page</th>
+            <th>Default Items</th>
+            <th>Options</th>
+        </tr>
+        <tr>
+            <td>Inventory</td>
+            <td>20</td>
+            <td>Fixed</td>
+        </tr>
+        <tr>
+            <td>Transactions</td>
+            <td>25</td>
+            <td>25, 50, 100, 200</td>
+        </tr>
+        <tr>
+            <td>Conversations</td>
+            <td>10</td>
+            <td>Fixed</td>
+        </tr>
+    </table>
+
+    <h2>12.3 Export File Naming</h2>
+    <p>Files export with format: <code>report-YYYY-MM-DD.csv</code></p>
+    <p>Example: <code>report-2025-12-08.csv</code></p>
+
+    <h2>12.4 Permission Summary</h2>
+    <table>
+        <tr>
+            <th>Action</th>
+            <th>Supervisor</th>
+            <th>Manager</th>
+            <th>DevAdmin</th>
+        </tr>
+        <tr>
+            <td>View inventory</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Cancel transactions</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Delete transactions</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Approve waste reports</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Reset statistics</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>User management</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✅</td>
+        </tr>
+    </table>
+
+    <h2>12.5 Contact Information</h2>
+    <p>For system issues or access requests:</p>
+    <ul>
+        <li>Contact your <strong>DevAdmin</strong></li>
+        <li>Submit feedback through the Ela assistant</li>
+    </ul>
+</div>
+
+<!-- DOCUMENT CONTROL -->
+<div class="section page-break">
+    <h1>DOCUMENT CONTROL</h1>
+
+    <table>
+        <tr>
+            <th>Version</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Changes</th>
+        </tr>
+        <tr>
+            <td>1.0</td>
+            <td>December 2025</td>
+            <td>System Admin</td>
+            <td>Initial release</td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        <p><strong>END OF DOCUMENT</strong></p>
+        <p>This SOP manual is confidential and intended for authorized Berjaya WMS users only.</p>
+        <p>Berjaya WMS Manager Dashboard SOP Manual v1.0 | December 2025</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Environment variables and secrets
+KEY.env
+*.env
+.env*
+
+# Node modules (if any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+nul
+
+# Nested git repo (already has its own repo)
+berjaya-wms-react/
