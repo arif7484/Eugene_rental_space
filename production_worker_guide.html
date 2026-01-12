@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Worker Quick Guide | Panduan Ringkas Pekerja Pengeluaran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 8mm;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+            background: #fff;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            color: #1e40af;
+            margin-bottom: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .lang-section {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lang-section.en { border-left: 4px solid #2563eb; }
+        .lang-section.ms { border-left: 4px solid #16a34a; }
+
+        .lang-label {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .lang-label.en { background: #dbeafe; color: #1e40af; }
+        .lang-label.ms { background: #dcfce7; color: #166534; }
+
+        h2 {
+            font-size: 13px;
+            color: #1e293b;
+            margin: 12px 0 8px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .step-num {
+            background: #2563eb;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            font-size: 11px;
+            padding-top: 1px;
+        }
+
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 10px;
+        }
+
+        .status-table td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 6px;
+            text-align: left;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .status-work { background: #dcfce7; color: #166534; }
+        .status-starve { background: #fef3c7; color: #92400e; }
+        .status-block { background: #fee2e2; color: #991b1b; }
+        .status-paused { background: #e0e7ff; color: #3730a3; }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-top: 10px;
+            font-size: 10px;
+        }
+
+        .warning-box strong { color: #92400e; }
+
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin: 8px 0;
+            font-size: 10px;
+        }
+
+        .break-times {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin: 8px 0;
+        }
+
+        .break-times table {
+            width: 100%;
+            font-size: 10px;
+        }
+
+        .break-times td {
+            padding: 3px 0;
+        }
+
+        .break-times td:nth-child(2),
+        .break-times td:nth-child(4) {
+            text-align: right;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                min-height: auto;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .two-col {
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PRODUCTION WORKER QUICK GUIDE</h1>
+        <div class="subtitle">Berjaya Autotech WMS | Panduan Ringkas Pekerja Pengeluaran</div>
+    </div>
+
+    <div class="two-col">
+        <!-- ENGLISH COLUMN -->
+        <div class="lang-section en">
+            <span class="lang-label en">ENGLISH</span>
+
+            <h2>1. Starting Your Shift</h2>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-content">Log in with your Google account</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-content">Select <strong>"Production"</strong> role</span>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span class="step-content">Choose your assigned zone (1-23)</span>
+            </div>
+
+            <h2>2. Scanning a Car (Zone 1 Only)</h2>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-content">Select <strong>"Scan Car"</strong> action</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-content">Scan the car's VIN barcode</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Note:</strong> Only Zone 1 can scan new cars. Zones 2-23 receive cars automatically.
+            </div>
+
+            <h2>3. Completing Your Work</h2>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-content">Finish all tasks on the current car</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-content">Select <strong>"Complete Work"</strong> and confirm</span>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span class="step-content">Car automatically moves to next zone</span>
+            </div>
+
+            <h2>4. Zone Status</h2>
+            <table class="status-table">
+                <tr>
+                    <td><span class="status-badge status-work">WORK</span></td>
+                    <td>Processing a car</td>
+                    <td><span class="status-badge status-block">BLOCK</span></td>
+                    <td>Waiting for next zone</td>
+                </tr>
+                <tr>
+                    <td><span class="status-badge status-starve">STARVE</span></td>
+                    <td>Waiting for car</td>
+                    <td><span class="status-badge status-paused">PAUSED</span></td>
+                    <td>System OFF / Break</td>
+                </tr>
+            </table>
+
+            <h2>5. Break Times</h2>
+            <div class="break-times">
+                <table>
+                    <tr><td>Morning</td><td>10:00 - 10:15</td><td>Afternoon 1</td><td>15:00 - 15:15</td></tr>
+                    <tr><td>Lunch</td><td>12:00 - 12:20</td><td>Afternoon 2</td><td>17:30 - 17:45</td></tr>
+                    <tr><td>Lunch (Fri)</td><td>12:30 - 14:30</td><td></td><td></td></tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <strong>Important:</strong> System automatically pauses during breaks. You cannot work during break times.
+            </div>
+        </div>
+
+        <!-- MALAY COLUMN -->
+        <div class="lang-section ms">
+            <span class="lang-label ms">BAHASA MALAYSIA</span>
+
+            <h2>1. Memulakan Syif Anda</h2>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-content">Log masuk dengan akaun Google anda</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-content">Pilih peranan <strong>"Production"</strong></span>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span class="step-content">Pilih zon yang ditetapkan (1-23)</span>
+            </div>
+
+            <h2>2. Mengimbas Kereta (Zon 1 Sahaja)</h2>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-content">Pilih tindakan <strong>"Scan Car"</strong></span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-content">Imbas kod bar VIN kereta</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Nota:</strong> Hanya Zon 1 boleh imbas kereta baru. Zon 2-23 terima kereta secara automatik.
+            </div>
+
+            <h2>3. Menyiapkan Kerja Anda</h2>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-content">Siapkan semua tugas pada kereta semasa</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-content">Pilih <strong>"Complete Work"</strong> dan sahkan</span>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span class="step-content">Kereta bergerak ke zon seterusnya secara automatik</span>
+            </div>
+
+            <h2>4. Status Zon</h2>
+            <table class="status-table">
+                <tr>
+                    <td><span class="status-badge status-work">WORK</span></td>
+                    <td>Memproses kereta</td>
+                    <td><span class="status-badge status-block">BLOCK</span></td>
+                    <td>Menunggu zon seterusnya</td>
+                </tr>
+                <tr>
+                    <td><span class="status-badge status-starve">STARVE</span></td>
+                    <td>Menunggu kereta</td>
+                    <td><span class="status-badge status-paused">PAUSED</span></td>
+                    <td>Sistem TUTUP / Rehat</td>
+                </tr>
+            </table>
+
+            <h2>5. Waktu Rehat</h2>
+            <div class="break-times">
+                <table>
+                    <tr><td>Pagi</td><td>10:00 - 10:15</td><td>Petang 1</td><td>15:00 - 15:15</td></tr>
+                    <tr><td>T.Hari</td><td>12:00 - 12:20</td><td>Petang 2</td><td>17:30 - 17:45</td></tr>
+                    <tr><td>T.Hari (Jumaat)</td><td>12:30 - 14:30</td><td></td><td></td></tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <strong>Penting:</strong> Sistem berhenti secara automatik semasa rehat. Anda tidak boleh bekerja semasa waktu rehat.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>Berjaya Autotech WMS v8.0</strong> | Factory Hours / Waktu Kilang: 6:00 AM - 8:00 PM
+    </div>
+</body>
+</html>

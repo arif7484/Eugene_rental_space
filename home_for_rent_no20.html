@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home For Rent - No. 20 Jalan Kecubung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d5 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B7355 0%, #6B5344 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .header-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .property-type {
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .hero-section {
+            background: #f8f5f0;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .address {
+            font-size: 20px;
+            color: #6B5344;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .location-badge {
+            background: #8B7355;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border-top: 1px solid #e0d5c5;
+            border-bottom: 1px solid #e0d5c5;
+        }
+
+        .feature-item {
+            padding: 25px 15px;
+            text-align: center;
+            border-right: 1px solid #e0d5c5;
+        }
+
+        .feature-item:last-child {
+            border-right: none;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .feature-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #6B5344;
+        }
+
+        .feature-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .amenities-section {
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: #6B5344;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: #f8f5f0;
+            border-radius: 10px;
+        }
+
+        .amenity-icon {
+            width: 35px;
+            height: 35px;
+            background: #8B7355;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .amenity-text {
+            font-size: 14px;
+            color: #444;
+        }
+
+        .highlights-section {
+            background: linear-gradient(135deg, #f8f5f0 0%, #efe8dd 100%);
+            padding: 30px;
+        }
+
+        .highlight-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .highlight-card.full-width {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #8B7355 0%, #6B5344 100%);
+            color: white;
+        }
+
+        .highlight-emoji {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .highlight-desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .preference-section {
+            padding: 25px 30px;
+            background: #fff9f0;
+            border-left: 4px solid #8B7355;
+            margin: 0 30px 30px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .preference-title {
+            font-weight: 600;
+            color: #6B5344;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .preference-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #6B5344 0%, #4a3a2f 100%);
+            padding: 35px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .phone-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .phone-icon {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: #25D366;
+            border-radius: 50%;
+            line-height: 45px;
+            font-size: 22px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-call {
+            background: white;
+            color: #6B5344;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #888;
+            background: #f8f5f0;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .contact-buttons {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+            .highlight-cards {
+                grid-template-columns: 1fr;
+            }
+            .highlight-card.full-width {
+                grid-column: span 1;
+            }
+            .phone-number {
+                font-size: 24px;
+            }
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-subtitle">Minimalist</div>
+            <div class="header-title">Home For Rent</div>
+            <div class="property-type">2 Storey Terrace House</div>
+        </div>
+
+        <div class="hero-section">
+            <div class="address">No. 20, Jalan Kecubung</div>
+            <div class="location-badge">New Home - Ready to Move In</div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🛏️</div>
+                <div class="feature-number">3</div>
+                <div class="feature-label">Bedrooms</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚿</div>
+                <div class="feature-number">2</div>
+                <div class="feature-label">Bathrooms</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚗</div>
+                <div class="feature-number">1</div>
+                <div class="feature-label">Parking</div>
+            </div>
+        </div>
+
+        <div class="amenities-section">
+            <div class="section-title">Property Features</div>
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <div class="amenity-icon">🍳</div>
+                    <div class="amenity-text">Kitchen with Sink</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🛋️</div>
+                    <div class="amenity-text">Spacious Living Room</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🌳</div>
+                    <div class="amenity-text">Outdoor Area</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🅿️</div>
+                    <div class="amenity-text">Dedicated Parking</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">💨</div>
+                    <div class="amenity-text">Ceiling Fans</div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🪟</div>
+                    <div class="amenity-text">Good Ventilation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlights-section">
+            <div class="section-title">Why Choose This Home?</div>
+            <div class="highlight-cards">
+                <div class="highlight-card">
+                    <div class="highlight-emoji">✨</div>
+                    <div class="highlight-title">Brand New</div>
+                    <div class="highlight-desc">Newly built property</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-emoji">🏡</div>
+                    <div class="highlight-title">2 Storey</div>
+                    <div class="highlight-desc">Terrace house design</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-emoji">🌴</div>
+                    <div class="highlight-title">Scenic View</div>
+                    <div class="highlight-desc">Green surroundings</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-emoji">🎨</div>
+                    <div class="highlight-title">Minimalist</div>
+                    <div class="highlight-desc">Clean modern design</div>
+                </div>
+                <div class="highlight-card full-width">
+                    <div class="highlight-emoji">👨‍👩‍👧‍👦</div>
+                    <div class="highlight-title">Perfect for Families</div>
+                    <div class="highlight-desc">Comfortable space for your loved ones</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="preference-section">
+            <div class="preference-title">
+                <span>🕌</span> Tenant Preference
+            </div>
+            <div class="preference-text">
+                Family & Muslim tenants preferred. We welcome responsible families looking for a peaceful home environment.
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-title">Interested? Contact Us Now!</div>
+            <div class="phone-number">
+                <span class="phone-icon">📞</span>
+                +60 11-2122 9774
+            </div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/60112122977" class="contact-btn btn-whatsapp">
+                    WhatsApp Us
+                </a>
+                <a href="tel:+60112122977" class="contact-btn btn-call">
+                    Call Now
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            Available for immediate move-in | Viewing by appointment
+        </div>
+    </div>
+</body>
+</html>

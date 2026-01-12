@@ -22,7 +22,15 @@
       "Bash(npm install:*)",
       "Bash(npx firebase:*)",
       "Bash(git reset:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(pip install:*)",
+      "Bash(python -c:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(cat:*)",
+      "Bash(node reset-block-timer.js:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

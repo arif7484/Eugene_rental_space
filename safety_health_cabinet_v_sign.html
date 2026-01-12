@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety & Health Cabinet V-Shape Sign</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 297mm;
+      height: 210mm;
+      font-family: Arial, Helvetica, sans-serif;
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .sign-container {
+      width: 297mm;
+      height: 210mm;
+      display: flex;
+      flex-direction: row;
+      background: white;
+    }
+
+    .panel {
+      width: 120mm;
+      height: 210mm;
+      background: #00873c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5mm;
+    }
+
+    .fold-section {
+      width: 28.5mm;
+      height: 210mm;
+      background: #00873c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .fold-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      border-left: 2px dashed rgba(255,255,255,0.5);
+    }
+
+    .fold-line-left {
+      left: 0;
+    }
+
+    .fold-line-right {
+      right: 0;
+    }
+
+    .fold-text {
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 2px;
+      opacity: 0.6;
+    }
+
+    .inner-box {
+      width: 100%;
+      height: 100%;
+      background: #00873c;
+      border-radius: 10px;
+      border: 4px solid white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8mm 5mm;
+    }
+
+    .top-text {
+      font-size: 32px;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 5mm;
+    }
+
+    .cross-box {
+      width: 65mm;
+      height: 65mm;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5mm;
+    }
+
+    .cross-svg {
+      width: 48mm;
+      height: 48mm;
+    }
+
+    .bottom-text {
+      font-size: 32px;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sign-container">
+    <!-- Left Fold Tab -->
+    <div class="fold-section">
+      <div class="fold-line fold-line-right"></div>
+      <span class="fold-text">FOLD ►</span>
+    </div>
+
+    <!-- Left Panel -->
+    <div class="panel">
+      <div class="inner-box">
+        <h1 class="top-text">SAFETY &<br>HEALTH</h1>
+
+        <div class="cross-box">
+          <svg class="cross-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="35" y="8" width="30" height="84" rx="4" fill="#00873c"/>
+            <rect x="8" y="35" width="84" height="30" rx="4" fill="#00873c"/>
+          </svg>
+        </div>
+
+        <h1 class="bottom-text">CABINET</h1>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="panel">
+      <div class="inner-box">
+        <h1 class="top-text">SAFETY &<br>HEALTH</h1>
+
+        <div class="cross-box">
+          <svg class="cross-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="35" y="8" width="30" height="84" rx="4" fill="#00873c"/>
+            <rect x="8" y="35" width="84" height="30" rx="4" fill="#00873c"/>
+          </svg>
+        </div>
+
+        <h1 class="bottom-text">CABINET</h1>
+      </div>
+    </div>
+
+    <!-- Right Fold Tab -->
+    <div class="fold-section">
+      <div class="fold-line fold-line-left"></div>
+      <span class="fold-text">◄ FOLD</span>
+    </div>
+  </div>
+</body>
+</html>
